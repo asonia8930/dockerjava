@@ -12,9 +12,8 @@ import java.io.Serializable;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-
-@Table(name = "CUSTOMER_ADDRESS")
 @Data
+@Table(name = "CUSTOMER_ADDRESS")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "addressId")
 public class CustomerAddress implements Serializable {
 

@@ -1,7 +1,9 @@
 package com.dockerdemo.controller;
 
 
+import com.dockerdemo.dao.CustomerDao;
 import com.dockerdemo.request.CustomerRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class CustomerController {
 
+
+    @Autowired
+    CustomerDao customerDao;
 
     @GetMapping(value = "/hello", produces = "application/json",headers = "accept=application/json")
     public ResponseEntity<String> returnCustomerData() {
@@ -25,6 +30,7 @@ public class CustomerController {
 
         String response = "ok";
 
+        customerDao.saveUserData(request);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 }
